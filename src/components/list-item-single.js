@@ -4,7 +4,7 @@ import { Card } from 'react-materialize';
 
 import { Link } from 'react-router-dom';
 
-class ListItem extends Component {
+class ListItemSingle extends Component {
 
   static propTypes = {
     item: PropTypes.shape({
@@ -24,10 +24,12 @@ class ListItem extends Component {
         <Link to={`/${item.id}`}>
           Voir plus de détails
         </Link>
+
+
       </Card>
     );
   }
 
 }
 
-export default ListItem;
+export default ListItemSingle;

@@ -12,19 +12,20 @@ class HomePage extends Component {
     }
   }
 
-  componentDidMount() {
+    componentDidMount() {
 
-    // Get data from API
-    fetch('http://localhost:1337')
-      // parse response
-      .then((res) => res.json())
-      // use parsed response
-      .then((json) => {
-        this.setState({
-          data: json,
-        });
-      });
-  }
+        fetch('http://localhost:1337')
+            .then((res) => res.json())
+            // use parsed response
+            .then((json) => {
+                this.setState({
+                    data: json,
+                });
+            }).catch(function() {
+            alert("OUPS le serveur ne répond pas, nous allons réesayer dans quelques secondes");
+        })
+
+    }
 
   render() {
 
