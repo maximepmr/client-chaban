@@ -25,24 +25,26 @@ class HomePage extends Component {
         const target = event.target;
 
         var dateFormat = require('dateformat');
-        var param = '';
+
+        // variable contenant les paramètres
+        var params = '';
 
         if (target.from.value) {
             var from = new Date(target.from.value);
-            param = '?from=' + dateFormat(from, "dd-mm-yy");
+            params = '?from=' + dateFormat(from, "dd-mm-yy");
         } else {
-            var param = '?from=';
+            params = '?from=';
         }
 
         if (target.to.value) {
             var to = new Date(target.to.value);
-            param += '&to=' + dateFormat(to, "dd-mm-yy");
+            params += '&to=' + dateFormat(to, "dd-mm-yy");
         } else {
-            param += '&to=';
+            params += '&to=';
         }
 
-
-        fetch('http://localhost:1337/' + param)
+        alert(params);
+        fetch('http://localhost:1337/' + params)
             .then((res) => res.json())
             // use parsed response
             .then((json) => {
@@ -69,12 +71,8 @@ class HomePage extends Component {
         })
     }
 
-
-
   render() {
-
     const { data } = this.state;
-
     return (
       <div>
         <h2> HomePage </h2>
@@ -90,7 +88,6 @@ class HomePage extends Component {
               <br />
               <input type="submit" value="Submit" />
           </form>
-
         {!data ? (
           <ProgressBar />
         ) : (
@@ -101,7 +98,6 @@ class HomePage extends Component {
       </div>
     );
   }
-
 }
 
 export default HomePage;
