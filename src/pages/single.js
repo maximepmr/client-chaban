@@ -24,7 +24,7 @@ class SinglePage extends Component {
             // use parsed response
             .then((json) => {
                 this.setState({
-                    data: json,
+                    data: [json],
                 });
             }).catch(function() {
             alert("OUPS le serveur ne répond pas, nous allons réesayer dans quelques secondes");
