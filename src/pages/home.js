@@ -22,9 +22,27 @@ class HomePage extends Component {
     }
 
     handleSubmit(event) {
+        const target = event.target;
 
-        alert('A name was submitted: ' + this.state.value);
-        fetch('http://localhost:1337/?to='+ this.state.value )
+        var dateFormat = require('dateformat');
+        var param = '';
+
+        if (target.from.value) {
+            var from = new Date(target.from.value);
+            param = '?from=' + dateFormat(from, "dd-mm-yy");
+        } else {
+            var param = '?from=';
+        }
+
+        if (target.to.value) {
+            var to = new Date(target.to.value);
+            param += '&to=' + dateFormat(to, "dd-mm-yy");
+        } else {
+            param += '&to=';
+        }
+
+
+        fetch('http://localhost:1337/' + param)
             .then((res) => res.json())
             // use parsed response
             .then((json) => {
@@ -62,11 +80,17 @@ class HomePage extends Component {
         <h2> HomePage </h2>
           <form onSubmit={this.handleSubmit}>
               <label>
-                  Name:
-                  <input type="text" value={this.state.value} onChange={this.handleChange} />
+                  <div class="big">FROM : </div>
+                  <input name="from" class="to" type="date" value={this.state.from} onChange={this.handleChange} />
               </label>
+              <label>
+                  <div class="big">TO : </div>
+                  <input name="to" class="to" type="date" value={this.state.to} onChange={this.handleChange} />
+              </label>
+              <br />
               <input type="submit" value="Submit" />
           </form>
+
         {!data ? (
           <ProgressBar />
         ) : (
