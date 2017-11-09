@@ -17,15 +17,9 @@ class ListItemSingle extends Component {
 
     return (
       <Card title={item.date} >
-
-
-
-
-        <Link to={`/${item.id}`}>
-          Voir plus de détails
-        </Link>
-
-
+        start :{item.start} <br />
+        end :{item.end} <br />
+        reason :{item.reason} <br />
       </Card>
     );
   }

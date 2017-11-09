@@ -39,7 +39,9 @@ class SinglePage extends Component {
 
       return (
           <div>
-
+              <Link to={`/`}>
+                Go to HomePage
+              </Link>
             <h2>{this.props.match.params.id}</h2>
 
 
