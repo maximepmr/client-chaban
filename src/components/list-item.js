@@ -17,10 +17,6 @@ class ListItem extends Component {
 
     return (
       <Card title={item.date} >
-
-
-
-
         <Link to={`/${item.id}`}>
           Voir plus de détails
         </Link>

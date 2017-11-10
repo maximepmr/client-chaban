@@ -25,7 +25,6 @@ class HomePage extends Component {
     handleSubmit(event) {
         const target = event.target;
         console.log(event);
-        alert('lol');
         var incorrect = 0;
         var dateFormat = require('dateformat');
 

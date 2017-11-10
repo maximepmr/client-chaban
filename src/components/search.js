@@ -1,24 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import ListItem from './list-item';
+import SearchInput from './search-input';
 
 class Search extends Component {
-
-    static propTypes = {
-    }
 
     render() {
         return (
             <div>
                 <form onSubmit={this.props.handleSubmit}>
-                    <label>
-                        <div className="big">FROM : </div>
-                        <input name="from" className="to" type="date" value={this.props.from} onChange={this.props.handleChange} />
-                    </label>
-                    <label>
-                        <div className="big">TO : </div>
-                        <input name="to" className="to" type="date" value={this.props.to} onChange={this.props.handleChange} />
-                    </label>
+                    <SearchInput name="from" value={this.props.from} onChange={this.props.handleChange} />
+                    <SearchInput name="to" value={this.props.to} onChange={this.props.handleChange} />
                     <br />
                     <input type="submit" value="Submit" />
                 </form>
