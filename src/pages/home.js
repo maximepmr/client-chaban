@@ -5,19 +5,19 @@ import { ProgressBar } from 'react-materialize';
 import { Link} from 'react-router-dom'
 class HomePage extends Component {
 
-  constructor(props) {
-    super(props);
+      constructor(props) {
+        super(props);
 
-    this.state = {
-      data: null,
-    }
+        this.state = {
+          data: null,
+        }
 
-      super(props);
-      this.state = {value: ''};
+          super(props);
+          this.state = {value: ''};
 
-      this.handleChange = this.handleChange.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-  }
+          this.handleChange = this.handleChange.bind(this);
+          this.handleSubmit = this.handleSubmit.bind(this);
+      }
     handleChange(event) {
         this.setState({value: event.target.value});
     }

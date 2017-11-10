@@ -66,7 +66,7 @@ class SinglePage extends Component {
 
                   <BackButton />
                   <PrevButton id={this.props.match.params.id} handleClick={this.componentDidMount}/>
-                  <NextButton />
+                  <NextButton id={this.props.match.params.id} handleClick={this.componentDidMount}/>
                   <h2>{this.props.match.params.id}</h2>
 
                   {!data ? (
