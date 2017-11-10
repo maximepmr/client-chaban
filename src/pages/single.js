@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ListSingle from './../components/list-single';
+import BackButton from './../components/back-button';
 import { ProgressBar } from 'react-materialize';
 
 import { Card } from 'react-materialize';
@@ -60,9 +61,8 @@ class SinglePage extends Component {
       } else {
           return (
               <div>
-                  <Link to={`/`}>
-                      Go to HomePage
-                  </Link>
+
+                  <BackButton />
                   <h2>{this.props.match.params.id}</h2>
 
                   {!data ? (

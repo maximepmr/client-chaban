@@ -4,7 +4,6 @@ import ListItem from './list-item';
 import SearchInput from './search-input';
 
 class Search extends Component {
-
     render() {
         return (
             <div>
@@ -17,7 +16,6 @@ class Search extends Component {
             </div>
         );
     }
-
 }
 
 export default Search;
