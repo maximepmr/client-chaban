@@ -16,11 +16,19 @@ class ListItemSingle extends Component {
     const { item } = this.props;
 
     return (
-      <Card title={item.date} >
-        start :{item.start} <br />
-        end :{item.end} <br />
-        reason :{item.reason} <br />
-      </Card>
+
+    <div>
+
+            {!item ? (
+                console.log('jizehdizejd')
+            ) : (
+              <Card title={item.date} >
+                  start :{item.start} <br />
+                  end :{item.end} <br />
+                  reason :{item.reason} <br />
+              </Card>
+          )}
+    </div>
     );
   }
 

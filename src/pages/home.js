@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import List from './../components/list';
+import Search from './../components/search';
 import { ProgressBar } from 'react-materialize';
 import { Link} from 'react-router-dom'
 class HomePage extends Component {
@@ -23,7 +24,8 @@ class HomePage extends Component {
 
     handleSubmit(event) {
         const target = event.target;
-
+        console.log(event);
+        alert('lol');
         var incorrect = 0;
         var dateFormat = require('dateformat');
 
@@ -92,18 +94,7 @@ class HomePage extends Component {
     return (
       <div>
         <h2> HomePage </h2>
-          <form onSubmit={this.handleSubmit}>
-              <label>
-                  <div class="big">FROM : </div>
-                  <input name="from" class="to" type="date" value={this.state.from} onChange={this.handleChange} />
-              </label>
-              <label>
-                  <div class="big">TO : </div>
-                  <input name="to" class="to" type="date" value={this.state.to} onChange={this.handleChange} />
-              </label>
-              <br />
-              <input type="submit" value="Submit" />
-          </form>
+          <Search from={this.state.from} to={this.state.to} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
         {!data ? (
           <ProgressBar />
         ) : (

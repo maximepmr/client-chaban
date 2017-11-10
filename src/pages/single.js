@@ -18,43 +18,65 @@ class SinglePage extends Component {
     }
 
     componentDidMount() {
+        this.setState ({res: false})
 
         fetch('http://localhost:1337/' + this.props.match.params.id)
-            .then((res) => res.json())
+            .then((res) => {
+            if (res.ok){
+                this.setState ({res: true})
+                return res.json()
+            }
+            this.setState ({erreur: res.status})
+            alert(res.status);
+            throw new Error(res.status);
+        })
             // use parsed response
             .then((json) => {
                 this.setState({
                     data: [json],
                 });
-            }).catch(function() {
-            alert("OUPS le serveur ne répond pas, nous allons réesayer dans quelques secondes");
+            }).catch(function(err) {
+            console.log(err);
         })
 
     }
 
-
-
   render() {
       const { data } = this.state;
 
-      return (
-          <div>
-              <Link to={`/`}>
-                Go to HomePage
-              </Link>
-            <h2>{this.props.match.params.id}</h2>
-
-
-
-              {!data ? (
+      if (this.state.erreur === 404) {
+          return (
+              <div>
+                  404
+              </div>
+          );
+      } else if (this.state.res === false){
+          return (
+              <div>
                   <ProgressBar />
-              ) : (
-                  <div>
-                    <ListSingle data={data} />
-                  </div>
-              )}
-          </div>
-      );
+                  Le serveur ne réponds pas, veuillez patienter
+              </div>
+          );
+      } else {
+          return (
+              <div>
+                  <Link to={`/`}>
+                      Go to HomePage
+                  </Link>
+                  <h2>{this.props.match.params.id}</h2>
+
+                  {!data ? (
+                      <ProgressBar />
+
+                  ) : (
+                      <div>
+                          <ListSingle data={data} />
+                      </div>
+                  )}
+              </div>
+          );
+      }
+
   }
 
 }
