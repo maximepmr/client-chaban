@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ListSingle from './../components/list-single';
 import BackButton from './../components/back-button';
+import PrevButton from './../components/prev-button';
+import NextButton from './../components/next-button';
 import { ProgressBar } from 'react-materialize';
 
 import { Card } from 'react-materialize';
@@ -63,6 +65,8 @@ class SinglePage extends Component {
               <div>
 
                   <BackButton />
+                  <PrevButton id={this.props.match.params.id} handleClick={this.componentDidMount}/>
+                  <NextButton />
                   <h2>{this.props.match.params.id}</h2>
 
                   {!data ? (
